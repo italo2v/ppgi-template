@@ -1,0 +1,50 @@
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+
+% ---
+% Inicia os apêndices
+% ---
+\begin{apendicesenv}
+
+% Imprime uma página indicando o início dos apêndices
+\partapendices
+
+% ----------------------------------------------------------
+\chapter{Códigos do RSA dentro do ENCLAVE}
+\label{ap cod rsa enclave}
+% ----------------------------------------------------------
+
+/App/App.cpp
+
+\#include <stdio.h>\\
+\#include <iostream>\\
+\#include "Enclave\_u.h"\\
+\#include "sgx\_urts.h"\\
+\#include "sgx\_utils/sgx\_utils.h"\\
+\#include <time.h>\\
+\#include <unistd.h>\\ 
+\#include "mbedtls/pk.h"\\
+\#include "mbedtls/entropy.h"\\
+\#include "mbedtls/error.h"\\
+\#include "glue.h"\\
+\#include <string.h>\\
+\#include <stdlib.h>\\
+\\
+
+/* Global EID shared by multiple threads */\\
+sgx\_enclave\_id\_t global\_eid = 0;\\
+
+// OCall implementations\\
+void ocall\_print(const char* str) {\\
+    printf("\%s$\backslash$n", str);\\
+}\\
+
+
+
+
+
+
+%--------------------------------------------------------
+\end{apendicesenv}
+% ---
