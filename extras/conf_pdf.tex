@@ -6,6 +6,46 @@
 
 % informações do PDF
 \makeatletter
+
+
+%-----------------------------------------------------------------------------
+% CONFIGURACAO DO SUMARIO
+%-----------------------------------------------------------------------------
+% Modifica o espaçamento no sumário
+% Nao ha espacos, exceto para as entradas de capitulos
+\setlength{\cftbeforeparagraphskip}{0pt}
+\setlength{\cftbeforesubsectionskip}{0pt}
+\setlength{\cftbeforesectionskip}{0pt}
+\setlength{\cftbeforesubsubsectionskip}{0pt}
+\setlength{\cftbeforechapterskip}{\onelineskip}
+
+% Alteração da indentação dos itens do sumário
+
+\cftsetindents{section}{20pt}{30pt}
+\cftsetindents{subsection}{30pt}{40pt}
+\cftsetindents{subsubsection}{40pt}{50pt}
+\cftsetindents{paragraph}{50pt}{60pt}
+
+
+
+% seção primária (Chapter) Caixa alta (alterado dentro de \makeatletter), negrito
+\renewcommand{\cftchapterfont}{\bfseries}
+
+% seção secundária (Section) Caixa alta (alterado dentro de \makeatletter)
+\renewcommand{\cftsectionfont}{\normalfont}
+
+% seção terciária (Subsection) caixa baixa, negrito
+\renewcommand{\cftsubsectionfont}{\normalfont\bfseries}
+
+% seção quaternária (Subsubsection) Caixa baixa, itálico
+\renewcommand{\cftsubsubsectionfont}{\itshape}
+
+% seção quinária (subsubsubsection) Caixa baixa
+\renewcommand{\cftparagraphfont}{\normalfont}
+
+%-----------------------------------------------------------------------------
+
+
 \hypersetup{
      	%pagebackref=true,
 		pdftitle={\@title}, 
