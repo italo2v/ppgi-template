@@ -22,6 +22,7 @@
 	section=TITLE,			% títulos de seções convertidos em letras maiúsculas
 	%subsection=TITLE,		% títulos de subseções convertidos em letras maiúsculas
 	%subsubsection=TITLE,	% títulos de subsubseções convertidos em letras maiúsculas
+	sumario=tradicional,
 	% -- opções do pacote babel --
 	english,					% idioma adicional para hifenização
 	%french,					% idioma adicional para hifenização
@@ -104,6 +105,7 @@
 
 % Alteração da indentação dos itens do sumário
 
+\cftsetindents{chapter}{10pt}{20pt}
 \cftsetindents{section}{20pt}{30pt}
 \cftsetindents{subsection}{30pt}{40pt}
 \cftsetindents{subsubsection}{40pt}{50pt}
@@ -125,7 +127,6 @@
 
 % seção quinária (subsubsubsection) Caixa baixa
 \renewcommand{\cftparagraphfont}{\normalfont}
-
 
 %-----------------------------------------------------------------------------
 
