@@ -8,42 +8,43 @@
 \makeatletter
 
 
-%-----------------------------------------------------------------------------
-% CONFIGURACAO DO SUMARIO
-%-----------------------------------------------------------------------------
-% Modifica o espaçamento no sumário
-% Nao ha espacos, exceto para as entradas de capitulos
-\setlength{\cftbeforeparagraphskip}{0pt}
-\setlength{\cftbeforesubsectionskip}{0pt}
-\setlength{\cftbeforesectionskip}{0pt}
-\setlength{\cftbeforesubsubsectionskip}{0pt}
-\setlength{\cftbeforechapterskip}{\onelineskip}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% COLOCANDO SECAO PRIMARIA E SECUNDARIA COMO CAIXA ALTA %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Alteração da indentação dos itens do sumário
+\let\oldcontentsline\contentsline
 
-\cftsetindents{section}{20pt}{30pt}
-\cftsetindents{subsection}{30pt}{40pt}
-\cftsetindents{subsubsection}{40pt}{50pt}
-\cftsetindents{paragraph}{50pt}{60pt}
+\def\contentsline#1#2{%
+	\expandafter\ifx\csname l@#1\endcsname\l@chapter
+	\expandafter\@firstoftwo
+	\else
+	\expandafter\@secondoftwo
+	\fi
+	{%
+		\oldcontentsline{#1}{\MakeTextUppercase{#2}}%
+	}{%
+	\expandafter\ifx\csname l@#1\endcsname\l@section
+	\expandafter\@firstoftwo
+	\else
+	\expandafter\@secondoftwo
+	\fi
+	{%
+		\oldcontentsline{#1}{\MakeTextUppercase{#2}}%
+	}{%
+	\oldcontentsline{#1}{#2}%
+  }%
+}%
+}
 
-
-
-% seção primária (Chapter) Caixa alta (alterado dentro de \makeatletter), negrito
-\renewcommand{\cftchapterfont}{\bfseries}
-
-% seção secundária (Section) Caixa alta (alterado dentro de \makeatletter)
-\renewcommand{\cftsectionfont}{\normalfont}
-
-% seção terciária (Subsection) caixa baixa, negrito
-\renewcommand{\cftsubsectionfont}{\normalfont\bfseries}
-
-% seção quaternária (Subsubsection) Caixa baixa, itálico
-\renewcommand{\cftsubsubsectionfont}{\itshape}
-
-% seção quinária (subsubsubsection) Caixa baixa
-\renewcommand{\cftparagraphfont}{\normalfont}
-
-%-----------------------------------------------------------------------------
+%\settocpreprocessor{section}{%
+%    \let\tempf@rtoc\f@rtoc%
+%    \def\f@rtoc{%
+%     \texorpdfstring{\MakeTextUppercase{%
+%        \tempf@rtoc}%
+%      }{\tempf@rtoc}%
+%    }%
+%}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \hypersetup{
